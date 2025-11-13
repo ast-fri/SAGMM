@@ -5,6 +5,8 @@
 - [Getting Started](#getting-started)
 - [Running the Project](#running-the-project)
 - [License](#license)
+- [Citation](#citation)
+- [Contact](#contact)
 
 ## Requirements
 
