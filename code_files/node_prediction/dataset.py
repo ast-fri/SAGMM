@@ -173,35 +173,6 @@ def load_papers100M(data_dir):
     
     return OptimizedDataset(ogb_dataset, split_idx)
 
-def load_papers100M(data_dir):
-    ogb_dataset = PygNodePropPredDataset('ogbn-papers100M',root=data_dir)
-    ogb_data=ogb_dataset[0]
-    dataset = NCDataset('ogbn-papers100M')
-    dataset.graph = dict()
-    dataset.graph['edge_index'] = torch.as_tensor(ogb_data.edge_index)
-    dataset.graph['node_feat'] = torch.as_tensor(ogb_data.x)
-    dataset.graph['num_nodes'] = ogb_data.num_nodes
-    
-    # Use mapped train, valid and test index, same as OGB.
-    split_idx = ogb_dataset.get_idx_split()
-    train_idx, valid_idx, test_idx = split_idx['train'], split_idx['valid'], split_idx['test']
-
-    # dataset.label = torch.as_tensor(ogb_data.y.data[all_idx], dtype=int).reshape(-1, 1)
-    dataset.label = torch.as_tensor(ogb_data.y.data, dtype=int).reshape(-1, 1) # 99% labels are nan, not available
-    # print(f'f1:{dataset.label.shape}')
-    # print(f'{ogb_data.num_nodes}')
-    def get_idx_split():
-        split_idx = {
-            'train': train_idx,
-            'valid': valid_idx,
-            'test': test_idx,
-        }
-        return split_idx
-
-    dataset.load_fixed_splits = get_idx_split
-
-    return dataset
-
 def load_proteins_dataset(data_dir):
     ogb_dataset = NodePropPredDataset(name='ogbn-proteins', root=f'{data_dir}')
     dataset = NCDataset('ogbn-proteins')
