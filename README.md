@@ -76,10 +76,10 @@ This project is licensed under the CC-BY-NC License - see LICENSE file for compl
 If you find our work helpful, please consider citing our paper:
 
 ```bibtex
-@article{SAGMM-2025,
+@article{meena2025self,
   title={Self-Adaptive Graph Mixture of Models},
-  author={[Authors]},
-  journal={arXiv preprint},
+  author={Meena, Mohit and Punjabi, Yash and A, Abhishek and Sharma, Vishal and Chandran, Mahesh},
+  journal={arXiv preprint arXiv:2511.13062},
   year={2025}
 }
 ```
